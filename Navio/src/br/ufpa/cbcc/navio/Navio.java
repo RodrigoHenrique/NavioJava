@@ -1,5 +1,5 @@
 package br.ufpa.cbcc.navio;
 
-public class Navio {
+public class Navio extends Embarcacao{
 
 }
