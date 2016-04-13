@@ -1,9 +1,25 @@
 package br.ufpa.cbcc.navio;
 
-public interface Veiculo {
-	public boolean mover();
-	public boolean mover(String meio);
+public abstract class Veiculo {
+	private String proprietario;
+	private String tipoLocomocao;
 	
-	public void manutencao();
-	public void manutencao(boolean permissao);
+	public Veiculo(){}
+	public Veiculo(String proprietario, String tipoLocomocao)
+	{
+		this.proprietario = proprietario;
+		this.tipoLocomocao = tipoLocomocao;
+	}
+
+	public abstract boolean mover();
+	
+	public final String getProprietario()
+	{
+		return this.proprietario;
+	}
+	
+	public final String getTipoLocomocao()
+	{
+		return this.tipoLocomocao;
+	}
 }
