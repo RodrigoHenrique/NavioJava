@@ -210,11 +210,11 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 			int km;
 			String pC;
 			System.out.println("Porto de Partida: " +this.portoPartida);
-			System.out.println("Porto de Chegada: ");
+			System.out.print("Porto de Chegada: ");
 			pC = ler.nextLine();
 			this.portoChegada = pC;
 			
-			System.out.println("Qual a distância entre os portos, em kms <digite um inteiro> : ");
+			System.out.print("Qual a distância entre os portos, em kms <digite um inteiro> : ");
 			km = ler.nextInt();
 			this.distanciaKm = km;
 			this.distanciaKmEntrePortos = km;

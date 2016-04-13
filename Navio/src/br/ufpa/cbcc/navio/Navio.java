@@ -61,7 +61,7 @@ public class Navio extends Embarcacao{
 			System.out.println("3 -> 8 Km/h");
 			System.out.println("4 -> 16 Km/h");
 			System.out.println("5 -> 32 Km/h");
-			
+			System.out.print("Resposta: ");
 			nivelVelocidade = ler.nextInt();
 			
 			switch(nivelVelocidade)
@@ -105,7 +105,7 @@ public class Navio extends Embarcacao{
 		this.mercadoriasABordo = false;
 	}
 
-	public boolean definirRota(String origem, String destino)
+	public boolean definirRota(String origem, String destino)  // Implementa o outro método sobrecarregado.
 	{
 		System.out.println("Embarcação: " +getNomeEmbarcacao());
 		if(this.getEmbarcacaoAportada()) System.out.println("Embarcação não aportada.");
@@ -114,7 +114,7 @@ public class Navio extends Embarcacao{
 			int km;
 			if(origem != this.getPortoPartida()) this.setPortoPartida(origem);
 			this.setPortoChegada(destino);
-			System.out.println("Qual a distância entre os portos, em kms <digite um inteiro> : ");
+			System.out.print("Qual a distância entre os portos, em kms <digite um inteiro> : ");
 			km = ler.nextInt();
 			this.setDistanciaKm(km);
 			this.setDistanciaKmEntrePortos(km);
@@ -124,7 +124,7 @@ public class Navio extends Embarcacao{
 		return false;
 	}
 
-	public void navegar()
+	public void navegar() // Sobrescreve o "método qualquer"
 	{
 		if(this.getDistanciaKm() == 0)
 		{
@@ -159,5 +159,28 @@ public class Navio extends Embarcacao{
 			}
 			this.navegar();
 		}
+	}
+
+	public static void main(String[] args)
+	{
+		Data dataTeste = new Data(1,1,2016);
+		Navio navioTeste = new Navio("Balerion",dataTeste,"Dany","Mereen");
+		
+		navioTeste.definirRota();
+		navioTeste.definirTripulacao();
+		navioTeste.ligarMotores();
+		navioTeste.definirVelocidade();
+		navioTeste.navegar();
+		if(navioTeste.viagemFinalizada()) System.out.println("Finalizada Simulação 1.");
+		
+		Data dataTeste2 = new Data(2,1,2016);
+		Navio navioTeste2 = new Navio("Meraxes",dataTeste2,"Dany","Mereen");
+		
+		navioTeste2.definirRota("Volantis","Porto Real");
+		navioTeste2.definirTripulacao();
+		navioTeste2.ligarMotores();
+		navioTeste2.definirVelocidade();
+		navioTeste2.navegar();
+		if(navioTeste2.viagemFinalizada()) System.out.println("Finalizada Simulação 2.");
 	}
 }
