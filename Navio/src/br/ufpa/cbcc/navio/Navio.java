@@ -104,4 +104,23 @@ public class Navio extends Embarcacao{
 	{
 		this.mercadoriasABordo = false;
 	}
+
+	public boolean definirRota(String origem, String destino)
+	{
+		System.out.println("Embarcação: " +getNomeEmbarcacao());
+		if(this.getEmbarcacaoAportada()) System.out.println("Embarcação não aportada.");
+		else
+		{
+			int km;
+			if(origem != this.getPortoPartida()) this.setPortoPartida(origem);
+			this.setPortoChegada(destino);
+			System.out.println("Qual a distância entre os portos, em kms <digite um inteiro> : ");
+			km = ler.nextInt();
+			this.setDistanciaKm(km);
+			this.setDistanciaKmEntrePortos(km);
+			this.setRotaDefinida();
+			return true;
+		}
+		return false;
+	}
 }

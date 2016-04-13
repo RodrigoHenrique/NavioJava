@@ -6,7 +6,6 @@ public interface Navegacao {
 	public void pilotoAutomatico();
 	public void pilotoManual();
 	public void navegar();
-	public int navegar(int distanciaKmANavegar);
 	public void operar();
 	public boolean viagemFinalizada();
 }

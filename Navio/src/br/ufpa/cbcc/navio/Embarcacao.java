@@ -171,6 +171,32 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 		this.mercadorias = mercadoriasDefine;
 	}
 	
+	public void setPortoPartida(String portoPartida)
+	{
+		this.portoPartida = portoPartida;
+	}
+
+	public void setPortoChegada(String portoChegada)
+	{
+		this.portoChegada = portoChegada;
+	}
+
+	public void setDistanciaKm(int distanciaKm)
+	{
+		this.distanciaKm = distanciaKm;
+	}
+
+	public void setDistanciaKmEntrePortos(int distanciaKmEntrePortos)
+	{
+		this.distanciaKmEntrePortos = distanciaKmEntrePortos;
+	}
+
+	public void setRotaDefinida()
+	{
+		if(this.rotaDefinida) this.rotaDefinida = false;
+		else this.rotaDefinida = true;
+	}
+	
 	// Implementations:
 	
 	Scanner ler = new Scanner(System.in);
@@ -195,25 +221,7 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 			this.rotaDefinida = true;
 		}
 	}
-	
-	public boolean definirRota(String origem, String destino)
-	{
-		System.out.println("Embarcação: " +getNomeEmbarcacao());
-		if(this.embarcacaoAportada) System.out.println("Embarcação não aportada.");
-		else
-		{
-			int km;
-			if(origem != this.portoPartida) this.portoPartida = origem;
-			this.portoChegada = destino;
-			System.out.println("Qual a distância entre os portos, em kms <digite um inteiro> : ");
-			km = ler.nextInt();
-			this.distanciaKm = km;
-			this.distanciaKmEntrePortos = km;
-			this.rotaDefinida = true;
-			return true;
-		}
-		return false;
-	}
+
 	
 	public void definirTripulacao()
 	{
