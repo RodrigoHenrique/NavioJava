@@ -222,7 +222,6 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 		}
 	}
 
-	
 	public void definirTripulacao()
 	{
 		while(true)
@@ -440,5 +439,17 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 			return true;
 		}
 		return false;
+	}
+
+	// Métodos Adicionais:
+	
+	public void percorreDistancia()
+	{
+		this.distanciaKm -=this.velocidadeKmHora;
+	}
+
+	public void implementaTempoHoras(int horas)
+	{
+		this.tempoHoras += horas;
 	}
 }

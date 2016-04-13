@@ -47,7 +47,7 @@ public class Navio extends Embarcacao{
 		else this.mercadoriasABordo = true;
 	}
 	
-	// Implementações:
+	// Implementations:
 	
 	public int definirVelocidade()
 	{
@@ -122,5 +122,42 @@ public class Navio extends Embarcacao{
 			return true;
 		}
 		return false;
+	}
+
+	public void navegar()
+	{
+		if(this.getDistanciaKm() == 0)
+		{
+			System.out.println("--" +this.getNomeEmbarcacao());
+			System.out.println("Horas Passadas: " +this.getTempoHoras());
+			System.out.println("Distância do destino: " +this.getDistanciaKm());
+			try
+			{
+				Thread.sleep(500);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+			System.out.print("Chegou ao Destino.");
+		}
+		else
+		{
+			System.out.println("--" +this.getNomeEmbarcacao());
+			System.out.println("-Horas Passadas: " +this.getTempoHoras() +" Distância do Destino: " +this.getDistanciaKm());
+			this.pilotoAutomatico();
+			this.pilotoManual();
+			this.percorreDistancia();
+			this.implementaTempoHoras(1);
+			try
+			{
+				Thread.sleep(500);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+			this.navegar();
+		}
 	}
 }
