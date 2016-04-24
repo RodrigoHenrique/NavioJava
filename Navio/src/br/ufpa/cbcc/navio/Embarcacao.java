@@ -1,6 +1,8 @@
 package br.ufpa.cbcc.navio;
 
 import java.util.Scanner;
+import java.util.List;
+import java.util.Vector;
 
 public abstract class Embarcacao extends Veiculo implements Navegacao{	
 	private String nomeEmbarcacao;
@@ -20,10 +22,12 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 	private int velocidadeKmHora;
 	private int tempoHoras;
 	
-	private Tripulante [] tripulacao;
-	private Passageiro [] passageiros;
-	private Carga [] cargas;
-	private Mercadoria [] mercadorias;
+	private Vector<Tripulante> tripulacao;
+	private List<Passageiro> passageiros;
+	private List<Carga> cargas;
+	private List<Mercadoria> mercadorias;
+	
+	
 	
 	public Embarcacao(String nomeEmbarcacao, Data dataRegistro, String proprietario, String portoPartida)
 	{
@@ -123,22 +127,22 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 		return this.tripulacaoDefinida;
 	}
 	
-	public final Tripulante[] getTripulacao()
+	public final Vector<Tripulante> getTripulacao()
 	{
 		return this.tripulacao;
 	}
 	
-	public final Passageiro[] getPassageiros()
+	public final List<Passageiro> getPassageiros()
 	{
 		return this.passageiros;
 	}
 	
-	public final Carga[] getCargas()
+	public final List<Carga> getCargas()
 	{
 		return this.cargas;
 	}
 	
-	public final Mercadoria[] getMercadorias()
+	public final List<Mercadoria> getMercadorias()
 	{
 		return this.mercadorias;
 	}
@@ -151,22 +155,22 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 		else this.embarcacaoAportada = true;
 	}
 	
-	public void setTripulacao(Tripulante[] tripulacaoDefine)
+	public void setTripulacao(Vector<Tripulante> tripulacaoDefine)
 	{
 		this.tripulacao = tripulacaoDefine;
 	}
 	
-	public void setPassageiros(Passageiro[] passageirosDefine)
+	public void setPassageiros(List<Passageiro> passageirosDefine)
 	{
 		this.passageiros = passageirosDefine;
 	}
 	
-	public void setCargas(Carga[] cargasDefine)
+	public void setCargas(List<Carga> cargasDefine)
 	{
 		this.cargas = cargasDefine;
 	}
 	
-	public void setMercadorias(Mercadoria[] mercadoriasDefine)
+	public void setMercadorias(List<Mercadoria> mercadoriasDefine)
 	{
 		this.mercadorias = mercadoriasDefine;
 	}
@@ -195,6 +199,12 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 	{
 		if(this.rotaDefinida) this.rotaDefinida = false;
 		else this.rotaDefinida = true;
+	}
+	
+	public void setNavegacaoLiberada()
+	{
+		if(this.embarcacaoAportada) this.navegacaoLiberada = false;
+		else this.navegacaoLiberada = true;
 	}
 	
 	// Implementations:
@@ -237,8 +247,9 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 			tripSobrenome = ler.nextLine();
 			System.out.println(" Cargo: ");
 			tripCargo = ler.nextLine();
-			//Tripulante trip = new Tripulante(tripSobrenome, tripCargo);
-			//this.tripulacao .. Inserir novo elemento no vetor... Nao sei essa parte da sintaxe.
+			
+			Tripulante novo = new Tripulante(tripCargo,tripSobrenome);
+			this.tripulacao.add(novo);
 		}
 	}
 	

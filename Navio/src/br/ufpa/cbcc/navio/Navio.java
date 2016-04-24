@@ -1,6 +1,12 @@
 package br.ufpa.cbcc.navio;
 
 public class Navio extends Embarcacao{
+	public static final int qdeMaxPassageiros = 500;
+	public static final int qdeMaxCargas = 50;
+	public static final int pesoMaxCargas = 100000;
+	public static final int qdeMaxMercadorias = 500;
+	public static final int valorRSMaxMercaorias = 1000000;
+	
 	private boolean passageirosABordo;
 	private boolean cargasABordo;
 	private boolean mercadoriasABordo;
