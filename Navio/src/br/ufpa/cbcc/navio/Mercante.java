@@ -1,5 +1,18 @@
 package br.ufpa.cbcc.navio;
 
-public class Mercante {
+import java.util.List;
 
+public class Mercante extends Navio implements Comercio{
+	public Mercante(String nomeEmbarcacao, Data dataRegistro, String proprietario, String portoPartida)
+	{
+		super(nomeEmbarcacao,dataRegistro,proprietario,portoPartida);
+		this.iniciaMercadoriasABordo();
+	}
+	
+	public void definirMercadorias(List<Mercadoria> mercadoriasNavio)
+	{
+		if(mercadoriasNavio.size() > qdeMaxMercadorias) return;
+		this.setMercadorias(mercadoriasNavio);
+		this.setMercadoriasABordo();
+	}
 }

@@ -166,6 +166,11 @@ public class Navio extends Embarcacao{
 			this.navegar();
 		}
 	}
+	
+	public final int getVelocidadeMax()
+	{
+		return 32;
+	}
 
 	public static void main(String[] args)
 	{
