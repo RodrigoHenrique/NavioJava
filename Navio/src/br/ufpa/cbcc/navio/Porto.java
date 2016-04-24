@@ -12,7 +12,7 @@ public class Porto {
 	private List<Carga> cargasNoPorto;
 	private List<Mercadoria> mercadoriasNoPorto;
 	public static final int qdeMaxFilas = 10;
-	public static final int qdeMaxEmbarcacoesPorFila = 5;
+	public static final int qdeMaxEmbarcacoesPorFila = 1;
 	public static final int qdeMaxPassageirosNoPorto = 1000;
 	public static final int qdeMaxCargasNoPorto = 100;
 	public static final int qdeMaxMercadoriasNoPorto = 1000;
@@ -111,10 +111,10 @@ public class Porto {
 		}
 	}
 
-	public void entradaPassageiros(List <Passageiro> passageirosEntrada)
+	public void entradaPassageiros(List<Passageiro> passageiros)
 	{
-		if(this.passageirosNoPorto.size() + passageirosEntrada.size() > qdeMaxPassageirosNoPorto) return;
-		this.passageirosNoPorto.addAll(passageirosEntrada);
+		if(this.passageirosNoPorto.size() + passageiros.size() > qdeMaxPassageirosNoPorto) return;
+		this.passageirosNoPorto.addAll(passageiros);
 	}
 	
 	public void saidaPassageiros(List <Passageiro> passageirosSaida)

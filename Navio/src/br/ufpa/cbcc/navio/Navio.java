@@ -1,5 +1,7 @@
 package br.ufpa.cbcc.navio;
 
+import java.util.List;
+
 public class Navio extends Embarcacao{
 	public static final int qdeMaxPassageiros = 500;
 	public static final int qdeMaxCargas = 50;
@@ -175,23 +177,75 @@ public class Navio extends Embarcacao{
 	public static void main(String[] args)
 	{
 		Data dataTeste = new Data(1,1,2016);
-		Navio navioTeste = new Navio("Balerion",dataTeste,"Dany","Mereen");
 		
-		navioTeste.definirRota();
-		navioTeste.definirTripulacao();
-		navioTeste.ligarMotores();
-		navioTeste.definirVelocidade();
-		navioTeste.navegar();
-		if(navioTeste.viagemFinalizada()) System.out.println("Finalizada Simulação 1.");
+		Porto portoSaida = new Porto("PedraDoDragao");
+		Porto portoChegada = new Porto("PortoReal");
 		
-		Data dataTeste2 = new Data(2,1,2016);
-		Navio navioTeste2 = new Navio("Meraxes",dataTeste2,"Dany","Mereen");
+		List <Passageiro> passageiros = null;
 		
-		navioTeste2.definirRota("Volantis","Porto Real");
-		navioTeste2.definirTripulacao();
-		navioTeste2.ligarMotores();
-		navioTeste2.definirVelocidade();
-		navioTeste2.navegar();
-		if(navioTeste2.viagemFinalizada()) System.out.println("Finalizada Simulação 2.");
+		for(int i=0;i<600;i++)
+		{
+			Passageiro pass = new Passageiro();
+			passageiros.add(pass);
+		}
+		
+		portoSaida.entradaPassageiros(passageiros);
+		
+		List <Carga> cargas = null;
+		
+		for(int i=0;i<90;i++)
+		{
+			Carga carg = new Carga();
+			cargas.add(carg);
+		}
+		
+		portoSaida.entradaCargas(cargas);
+		
+		List <Mercadoria> mercadorias = null;
+		
+		for(int i=0;i<999;i++)
+		{
+			Mercadoria merc = new Mercadoria();
+			mercadorias.add(merc);
+		}
+		
+		portoSaida.entradaMercadorias(mercadorias);
+
+		Cruzeiro cruzeiro = new Cruzeiro("Balerion",dataTeste,"Aegon",portoSaida.getNomePorto());
+		
+		Cargueiro cargueiro = new Cargueiro("Meraxes",dataTeste,"Rhaenys",portoSaida.getNomePorto());
+		
+		Mercante mercante = new Mercante("Vhagar",dataTeste,"Visenya",portoSaida.getNomePorto());
+		
+		portoSaida.entradaEmbarcacao(cruzeiro);
+		portoSaida.entradaEmbarcacao(cargueiro);
+		portoSaida.entradaEmbarcacao(mercante);
+		
+		for(int i=0;i<portoSaida.getFilasEmbarcacao().size();i++)
+		{
+			if(portoSaida.getFilasEmbarcacao().elementAt(i).peek() instanceof Cruzeiro)
+			{
+				Cruzeiro aux = (Cruzeiro) portoSaida.getFilasEmbarcacao().elementAt(i).peek();
+				
+				aux.definirRota();
+				portoSaida.saidaEmbarcacao(aux);
+				
+				aux.definirTripulacao();
+				
+				List <Passageiro> passEmbarque = null;
+				portoSaida.saidaPassageiros(passEmbarque);
+				aux.definirPassageiros(passEmbarque);
+				
+				aux.ligarMotores();
+				aux.definirVelocidade();
+				aux.navegar();
+				
+				portoChegada.entradaEmbarcacao(aux);
+				if(aux.viagemFinalizada()) System.out.println("Finalizada Viagem.");
+				
+				List <Passageiro> passDesembarque = aux.getPassageiros();
+				portoChegada.entradaPassageiros(passDesembarque);
+			}
+		}
 	}
 }
