@@ -1,5 +1,7 @@
 package br.ufpa.cbcc.navio;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Vector;
@@ -22,6 +24,10 @@ public class Porto {
 	public Porto(String nome)
 	{
 		this.nomePorto = nome;
+		this.passageirosNoPorto = new ArrayList <Passageiro>();
+		this.cargasNoPorto = new ArrayList <Carga>();
+		this.mercadoriasNoPorto = new ArrayList <Mercadoria>();
+		this.filasEmbarcacao = new Vector < Queue <Embarcacao> >();
 	}
 	
 	// Gets:
@@ -54,7 +60,7 @@ public class Porto {
 		{
 			if(filasEmbarcacao.isEmpty())
 			{
-				Queue<Embarcacao> aux = null;
+				Queue<Embarcacao> aux = new LinkedList <Embarcacao>();
 				filasEmbarcacao.addElement(aux);
 				filasEmbarcacao.lastElement().add(embarcacaoEntrada);
 				filasEmbarcacao.elementAt(0).element().setEmbarcacaoAportada();
@@ -64,7 +70,7 @@ public class Porto {
 			{
 				if(filasEmbarcacao.lastElement().size() >= qdeMaxEmbarcacoesPorFila)
 				{
-					Queue<Embarcacao> aux = null;
+					Queue<Embarcacao> aux = new LinkedList <Embarcacao>();
 					filasEmbarcacao.add(aux);
 					filasEmbarcacao.lastElement().add(embarcacaoEntrada);
 					filasEmbarcacao.lastElement().element().setEmbarcacaoAportada();
@@ -113,8 +119,10 @@ public class Porto {
 
 	public void entradaPassageiros(List<Passageiro> passageiros)
 	{
-		if(this.passageirosNoPorto.size() + passageiros.size() > qdeMaxPassageirosNoPorto) return;
-		this.passageirosNoPorto.addAll(passageiros);
+		if(this.passageirosNoPorto.size() + passageiros.size() <= qdeMaxPassageirosNoPorto)
+		{
+			this.passageirosNoPorto.addAll(passageiros);
+		}
 	}
 	
 	public void saidaPassageiros(List <Passageiro> passageirosSaida)

@@ -1,5 +1,6 @@
 package br.ufpa.cbcc.navio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Navio extends Embarcacao{
@@ -181,7 +182,7 @@ public class Navio extends Embarcacao{
 		Porto portoSaida = new Porto("PedraDoDragao");
 		Porto portoChegada = new Porto("PortoReal");
 		
-		List <Passageiro> passageiros = null;
+		List <Passageiro> passageiros = new ArrayList <Passageiro>();
 		
 		for(int i=0;i<600;i++)
 		{
@@ -191,7 +192,7 @@ public class Navio extends Embarcacao{
 		
 		portoSaida.entradaPassageiros(passageiros);
 		
-		List <Carga> cargas = null;
+		List <Carga> cargas = new ArrayList <Carga>();
 		
 		for(int i=0;i<90;i++)
 		{
@@ -201,7 +202,7 @@ public class Navio extends Embarcacao{
 		
 		portoSaida.entradaCargas(cargas);
 		
-		List <Mercadoria> mercadorias = null;
+		List <Mercadoria> mercadorias = new ArrayList <Mercadoria>();
 		
 		for(int i=0;i<999;i++)
 		{
@@ -225,6 +226,7 @@ public class Navio extends Embarcacao{
 		{
 			if(portoSaida.getFilasEmbarcacao().elementAt(i).peek() instanceof Cruzeiro)
 			{
+				System.out.println("oi");
 				Cruzeiro aux = (Cruzeiro) portoSaida.getFilasEmbarcacao().elementAt(i).peek();
 				
 				aux.definirRota();
@@ -232,7 +234,7 @@ public class Navio extends Embarcacao{
 				
 				aux.definirTripulacao();
 				
-				List <Passageiro> passEmbarque = null;
+				List <Passageiro> passEmbarque = new ArrayList <Passageiro>();
 				portoSaida.saidaPassageiros(passEmbarque);
 				aux.definirPassageiros(passEmbarque);
 				

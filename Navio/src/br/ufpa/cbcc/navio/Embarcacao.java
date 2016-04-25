@@ -1,6 +1,7 @@
 package br.ufpa.cbcc.navio;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -47,6 +48,10 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 		this.modoPilotoAuto = false;
 		this.rotaDefinida = false;
 		this.tripulacaoDefinida = false;
+		this.tripulacao = new Vector <Tripulante>();
+		this.passageiros = new ArrayList <Passageiro>();
+		this.cargas = new ArrayList <Carga>();
+		this.mercadorias = new ArrayList <Mercadoria>();
 	}
 	
 	// Gets:
