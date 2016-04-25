@@ -226,16 +226,15 @@ public class Navio extends Embarcacao{
 		{
 			if(portoSaida.getFilasEmbarcacao().elementAt(i).peek() instanceof Cruzeiro)
 			{
-				System.out.println("oi");
 				Cruzeiro aux = (Cruzeiro) portoSaida.getFilasEmbarcacao().elementAt(i).peek();
 				
+				portoSaida.saidaEmbarcacao();
 				aux.definirRota();
-				portoSaida.saidaEmbarcacao(aux);
 				
 				aux.definirTripulacao();
 				
 				List <Passageiro> passEmbarque = new ArrayList <Passageiro>();
-				portoSaida.saidaPassageiros(passEmbarque);
+				passEmbarque = portoSaida.saidaPassageiros();
 				aux.definirPassageiros(passEmbarque);
 				
 				aux.ligarMotores();

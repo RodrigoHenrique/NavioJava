@@ -14,7 +14,7 @@ public class Porto {
 	private List<Carga> cargasNoPorto;
 	private List<Mercadoria> mercadoriasNoPorto;
 	public static final int qdeMaxFilas = 10;
-	public static final int qdeMaxEmbarcacoesPorFila = 1;
+	public static final int qdeMaxEmbarcacoesPorFila = 5;
 	public static final int qdeMaxPassageirosNoPorto = 1000;
 	public static final int qdeMaxCargasNoPorto = 100;
 	public static final int qdeMaxMercadoriasNoPorto = 1000;
@@ -86,15 +86,18 @@ public class Porto {
 		}
 	}
 
-	public void saidaEmbarcacao(Embarcacao embarcacaoSaida)
+	
+	
+	public Embarcacao saidaEmbarcacao()
 	{
 		if(filasEmbarcacao.isEmpty())
 		{
 			System.out.println("Porto vazio.");
-			embarcacaoSaida = null;
+			return null;
 		}
 		else
 		{
+			Embarcacao embarcacaoSaida;
 			for(int i=0;i<filasEmbarcacao.size();i++)
 			{
 				if(!filasEmbarcacao.elementAt(i).isEmpty())
@@ -108,12 +111,15 @@ public class Porto {
 				
 				if(filasEmbarcacao.elementAt(j).peek().getRotaDefinida() && filasEmbarcacao.elementAt(j).peek().getTripulacaoDefinida())
 				{
+					System.out.println("oi");
 					filasEmbarcacao.elementAt(i).peek().setEmbarcacaoAportada();
 					embarcacaoSaida = filasEmbarcacao.elementAt(j).peek();
 					filasEmbarcacao.elementAt(i).poll();
 					System.out.println("Embarcacao desaportada.");
+					return embarcacaoSaida;
 				}
 			}
+			return null;
 		}
 	}
 
@@ -125,17 +131,25 @@ public class Porto {
 		}
 	}
 	
-	public void saidaPassageiros(List <Passageiro> passageirosSaida)
+	public List <Passageiro> saidaPassageiros()
 	{
+		List <Passageiro> passageirosSaida = new ArrayList <Passageiro>();
 		if(!this.passageirosNoPorto.isEmpty())
 		{
 			int i;
 			System.out.println("Quantos passageiros embarcarao? <digite um numero inteiro positivo> : ");
 			i = ler.nextInt();
 			
+			if(i == 0)
+			{
+				return passageirosSaida;
+			}
+			
 			passageirosSaida.addAll(this.passageirosNoPorto.subList(0, i - 1));
 			this.passageirosNoPorto.removeAll(passageirosSaida);
+			return passageirosSaida;
 		}
+		return null;
 	}
 
 	public void entradaCargas(List <Carga> cargasEntrada)

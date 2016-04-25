@@ -217,7 +217,7 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 	Scanner ler = new Scanner(System.in);
 	
 	public void definirRota()
-	{		
+	{	
 		System.out.println("Embarcação: " +getNomeEmbarcacao());
 		if(this.embarcacaoAportada) System.out.println("Embarcação não aportada.");
 		else
@@ -228,6 +228,7 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 			System.out.print("Porto de Chegada: ");
 			pC = ler.nextLine();
 			this.portoChegada = pC;
+			System.out.println("oi");
 			
 			System.out.print("Qual a distância entre os portos, em kms <digite um inteiro> : ");
 			km = ler.nextInt();
