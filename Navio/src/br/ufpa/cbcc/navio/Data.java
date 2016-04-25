@@ -18,6 +18,13 @@ public final class Data {
 		else this.ano = ano;
 	}
 	
+	public Data(Data copia)
+	{
+		this.dia = copia.dia;
+		this.mes = copia.mes;
+		this.ano = copia.ano;
+	}
+	
 	private int checarDia(int dia, int mes, int ano)
 	{
 		int d = diasPorMes[mes];

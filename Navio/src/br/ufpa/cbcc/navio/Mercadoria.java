@@ -12,6 +12,13 @@ public final class Mercadoria {
 		this.valorRS = 0;
 	}
 	
+	public Mercadoria(Mercadoria copia)
+	{
+		this.nomeMercadoria = copia.nomeMercadoria;
+		this.quantidade = copia.quantidade;
+		this.valorRS = copia.valorRS;
+	}
+	
 	public Mercadoria(String nomeMercadoria, int quantidade, float valorRS)
 	{
 		this.nomeMercadoria = nomeMercadoria;

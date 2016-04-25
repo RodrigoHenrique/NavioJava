@@ -9,6 +9,11 @@ public class Cargueiro extends Navio{
 		this.iniciaCargasABordo();
 	}
 	
+	public Cargueiro(Cargueiro copia)
+	{
+		super((Navio)copia);
+	}
+	
 	public void definirCargas(List<Carga> cargasCargueiro)
 	{
 		if(cargasCargueiro.size() > qdeMaxCargas) return;

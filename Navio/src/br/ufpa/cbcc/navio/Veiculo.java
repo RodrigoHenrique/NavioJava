@@ -10,6 +10,12 @@ public abstract class Veiculo {
 		this.proprietario = proprietario;
 		this.tipoLocomocao = tipoLocomocao;
 	}
+	
+	public Veiculo(Veiculo copia)
+	{
+		this.proprietario = copia.proprietario;
+		this.tipoLocomocao = copia.tipoLocomocao;
+	}
 
 	public abstract boolean mover();
 	

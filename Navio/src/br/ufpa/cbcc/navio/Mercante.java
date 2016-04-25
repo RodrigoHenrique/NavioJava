@@ -9,6 +9,11 @@ public class Mercante extends Navio implements Comercio{
 		this.iniciaMercadoriasABordo();
 	}
 	
+	public Mercante(Mercante copia)
+	{
+		super((Navio)copia);
+	}
+	
 	public void definirMercadorias(List<Mercadoria> mercadoriasNavio)
 	{
 		if(mercadoriasNavio.size() > qdeMaxMercadorias) return;

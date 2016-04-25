@@ -10,6 +10,12 @@ public final class Carga {
 		this.peso = 1.0;
 	}
 	
+	public Carga(Carga copia)
+	{
+		this.nomeCarga = copia.nomeCarga;
+		this.peso = copia.peso;
+	}
+	
 	public Carga(String nomeCarga, double peso)
 	{
 		this.nomeCarga = nomeCarga;

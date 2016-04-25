@@ -11,6 +11,13 @@ public class Submarino extends Embarcacao{
 		this.isSubmerso = false;
 	}
 	
+	public Submarino(Submarino copia)
+	{
+		super((Embarcacao)copia);
+		this.tipoCombustivel = copia.tipoCombustivel;
+		this.isSubmerso = copia.isSubmerso;
+	}
+	
 	public final String getTipoCombustivel()
 	{
 		return this.tipoCombustivel;

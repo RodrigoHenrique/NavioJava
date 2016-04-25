@@ -14,6 +14,14 @@ public final class Passageiro {
 		this.peso = 0.0;
 	}
 	
+	public Passageiro(Passageiro copia)
+	{
+		this.nomePassageiro = copia.nomePassageiro;
+		this.sobrenomePassageiro = copia.sobrenomePassageiro;
+		this.idade = copia.idade;
+		this.peso = copia.peso;
+	}
+	
 	public Passageiro(String nomePassageiro, String sobrenomePassageiro, int idade, double peso)
 	{
 		this.nomePassageiro = nomePassageiro;

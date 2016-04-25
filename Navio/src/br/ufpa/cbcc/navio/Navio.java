@@ -19,6 +19,14 @@ public class Navio extends Embarcacao{
 		super(nomeEmbarcacao,dataRegistro,proprietario,portoPartida);
 	}
 	
+	public Navio(Navio copia)
+	{
+		super((Embarcacao)copia);
+		this.passageirosABordo = copia.passageirosABordo;
+		this.cargasABordo = copia.cargasABordo;
+		this.mercadoriasABordo = copia.mercadoriasABordo;
+	}
+	
 	// Gets:
 	
 	public final boolean getPassageirosABordo()

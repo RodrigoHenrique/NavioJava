@@ -28,8 +28,6 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 	private List<Carga> cargas;
 	private List<Mercadoria> mercadorias;
 	
-	
-	
 	public Embarcacao(String nomeEmbarcacao, Data dataRegistro, String proprietario, String portoPartida)
 	{
 		super(proprietario,"Mar");
@@ -54,6 +52,28 @@ public abstract class Embarcacao extends Veiculo implements Navegacao{
 		this.mercadorias = new ArrayList <Mercadoria>();
 	}
 	
+	public Embarcacao(Embarcacao copia)
+	{
+		super((Veiculo)copia);
+		this.nomeEmbarcacao = copia.nomeEmbarcacao;
+		this.dataRegistro = copia.dataRegistro;
+		this.portoPartida = copia.portoPartida;
+		this.embarcacaoAportada = copia.embarcacaoAportada;
+		this.navegacaoLiberada = copia.navegacaoLiberada;
+		this.rotaDefinida = copia.rotaDefinida;
+		this.tripulacaoDefinida = copia.tripulacaoDefinida;
+		this.estadoMotor = copia.estadoMotor;
+		this.distanciaKm = copia.distanciaKm;
+		this.distanciaKmAuto = copia.distanciaKmAuto;
+		this.distanciaKmEntrePortos = copia.distanciaKmEntrePortos;
+		this.modoPilotoAuto = copia.modoPilotoAuto;
+		this.velocidadeKmHora = copia.velocidadeKmHora;
+		this.tempoHoras = copia.tempoHoras;
+		this.tripulacao = copia.tripulacao;
+		this.passageiros = copia.passageiros;
+		this.cargas = copia.cargas;
+		this.mercadorias = copia.mercadorias;
+	}
 	// Gets:
 	
 	public final String getNomeEmbarcacao()

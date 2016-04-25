@@ -13,6 +13,12 @@ public class CruzeiroComercial extends Cruzeiro implements Comercio{
 		this.podeNavegarTempoHabil = false;
 	}
 	
+	public CruzeiroComercial(CruzeiroComercial copia)
+	{
+		super((Cruzeiro)copia);
+		this.podeNavegarTempoHabil = copia.podeNavegarTempoHabil;
+	}
+	
 	public final boolean getPodeNavegarTempoHabil()
 	{
 		return this.podeNavegarTempoHabil;

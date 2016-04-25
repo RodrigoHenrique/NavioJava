@@ -30,6 +30,15 @@ public class Porto {
 		this.filasEmbarcacao = new Vector < Queue <Embarcacao> >();
 	}
 	
+	public Porto(Porto copia)
+	{
+		this.nomePorto = copia.nomePorto;
+		this.filasEmbarcacao = copia.filasEmbarcacao;
+		this.passageirosNoPorto = copia.passageirosNoPorto;
+		this.cargasNoPorto = copia.cargasNoPorto;
+		this.mercadoriasNoPorto = copia.mercadoriasNoPorto;
+	}
+	
 	// Gets:
 	
 	public final String getNomePorto()

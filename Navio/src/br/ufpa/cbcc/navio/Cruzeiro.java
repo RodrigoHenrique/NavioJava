@@ -9,6 +9,11 @@ public class Cruzeiro extends Navio{
 		this.iniciaPassageirosABordo();
 	}
 	
+	public Cruzeiro(Cruzeiro copia)
+	{
+		super((Navio)copia);
+	}
+	
 	public void definirPassageiros(List<Passageiro> passageirosNavio)
 	{
 		if(passageirosNavio.size() > qdeMaxPassageiros) return;

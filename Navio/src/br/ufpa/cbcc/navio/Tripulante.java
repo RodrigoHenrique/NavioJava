@@ -10,6 +10,12 @@ public final class Tripulante {
 		this.sobrenomeTripulante = sobrenomeTripulante;
 	}
 	
+	public Tripulante(Tripulante copia)
+	{
+		this.cargo = copia.cargo;
+		this.sobrenomeTripulante = copia.sobrenomeTripulante;
+	}
+	
 	public final String getCargo()
 	{
 		return this.cargo;
